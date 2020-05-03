@@ -21,9 +21,12 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class AppComponent {
   @ViewChildren(FormControlName, { read: ElementRef }) formControls: ElementRef[];
+
   formObj: {};
   userForm: FormGroup;
   message: { [key: string]: string } = {};
+  status: string;
+
   private validationMessages: {
     [key: string]: { [key: string]: string | { [key: string]: string } };
   };
@@ -33,28 +36,42 @@ export class AppComponent {
         required: "Please enter your first name"
       },
       lastName: {
-        required: "Please enter your first name"
+        required: "Please enter your last name"
       },
       email: {
-        required: "Please enter your first name",
+        required: "Please enter your Email",
         email: "Please enter a valid email password"
       },
       lineOne: {
-        required: "Please enter your first name",
+        required: "Please enter your address line one",
       },
       lineTwo: {
-        required: "Please enter your first name",
+        required: "Please enter your address line two",
       },
       city: {
-        required: "Please enter your first name",
+        required: "Please enter your city",
       },
       state: {
-        required: "Please enter your first name",
+        required: "Please enter your state",
       },
       country: {
-        required: "Please enter your first name",
+        required: "Please enter your country",
       }
     };
+  }
+  ngAfterViewInit(): void {
+    const addBlurs: Observable<
+      any
+    >[] = this.formControls.map((formControl: ElementRef) =>
+      fromEvent(formControl.nativeElement, 'blur')
+    );
+    merge(this.userForm.valueChanges, ...addBlurs)
+      .pipe(debounceTime(500))
+      .subscribe((value) => {
+        this.message = this.invalidInputs(
+          this.userForm
+        );
+      });
   }
 
   ngOnInit(): void {
@@ -63,44 +80,36 @@ export class AppComponent {
       lastName: ['', Validators.required],
       email: ['',[ Validators.required, Validators.email]],
       address: this.fb.group({
-        lineOne: ['', [Validators.required]],
-        lineTwo: ['', [Validators.required]],
+        lineOne: ['', Validators.required],
+        lineTwo: ['', Validators.required],
         city: ['', Validators.required],
         state: ['', Validators.required],
-        country: ['', [Validators.required]],
+        country: ['', Validators.required],
       }),
     });
+
+    this.userForm.valueChanges.subscribe(
+      () => {
+       const { dirty, pristine, valid, errors, invalid, value } = this.userForm;
+       this.status = JSON.stringify({ dirty, pristine, valid, errors, invalid, value })
+      }
+    )
   }
 
-  ngAfterViewInit(): void {
-    const addBlurs: Observable<
-      any
-    >[] = this.formControls.map((formControl: ElementRef) =>
-      fromEvent(formControl.nativeElement, 'blur')
-    );
-    merge(this.userForm.valueChanges, ...addBlurs)
-      .pipe(debounceTime(800))
-      .subscribe((value) => {
-        this.message = this.invalidItems(
-          this.userForm
-        );
-      });
-  }
-
-  invalidItems(container: FormGroup): { [key: string]: string } {
-    const messages = {};
-    for (const controlKey in container.controls) {
-        const c = container.controls[controlKey];
-        if (c instanceof FormGroup) {
-          const childMessages = this.invalidItems(c);
-          Object.assign(messages, childMessages);
+  invalidInputs(formgroup: FormGroup): { [key: string]: string } {
+    let messages = {};
+    for (const input in formgroup.controls) {
+        const key = formgroup.controls[input];
+        if (key instanceof FormGroup) {
+          const nestedGroupMessages = this.invalidInputs(key);
+          Object.assign(messages, nestedGroupMessages)
         } else {
-          if (this.validationMessages[controlKey]) {
-            messages[controlKey] = '';
-            if ((c.dirty || c.touched) && c.errors) {
-              Object.keys(c.errors).map(messageKey => {
-                if (this.validationMessages[controlKey][messageKey]) {
-                  messages[controlKey] += this.validationMessages[controlKey][messageKey] + ' ';
+          if (this.validationMessages[input]) {
+            messages[input] = '';
+            if (key.errors && (key.dirty || key.touched)) {
+              Object.keys(key.errors).map(messageKey => {
+                if (this.validationMessages[input][messageKey]) {
+                  messages[input] = this.validationMessages[input][messageKey];
                 }
               });
           }
@@ -109,6 +118,7 @@ export class AppComponent {
     }
     return messages;
   }
+
 
 
   onSubmit() {
