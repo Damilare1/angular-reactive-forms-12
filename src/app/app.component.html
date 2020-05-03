@@ -10,14 +10,8 @@
             formControlName="firstName"
             class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
             placeholder="First Name"
-            [ngClass]="{
-              'border-red-800': message && message.firstName
-            }"
           />
         </div>
-        <span class="text-sm text-red-800" *ngIf="message && message.firstName">
-          {{ message.firstName }}
-        </span>
       </label>
     </div>
     <div>
@@ -29,14 +23,8 @@
             formControlName="lastName"
             class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
             placeholder="Last Name"
-            [ngClass]="{
-              'border-red-800': message && message.lastName
-            }"
           />
         </div>
-        <span class="text-sm text-red-800" *ngIf="message && message.lastName">
-          {{ message.lastName }}
-        </span>
       </label>
     </div>
     <div>
@@ -48,14 +36,8 @@
             formControlName="email"
             class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
             placeholder="Email address"
-            [ngClass]="{
-              'border-red-800': message && message.email
-            }"
           />
         </div>
-        <span class="text-sm text-red-800" *ngIf="message && message.email">
-          {{ message.email }}
-        </span>
       </label>
     </div>
     <div formGroupName="address" class="my-6">
@@ -69,17 +51,8 @@
                 formControlName="lineOne"
                 class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
                 placeholder="Enter address line one"
-                [ngClass]="{
-                  'border-red-800': message && message.lineOne
-                }"
               />
             </div>
-            <span
-              class="text-sm text-red-800"
-              *ngIf="message && message.lineOne"
-            >
-              {{ message && message.lineOne }}
-            </span>
           </label>
         </div>
         <div class="w-full">
@@ -91,17 +64,8 @@
                 formControlName="lineTwo"
                 class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
                 placeholder="Enter address line two"
-                [ngClass]="{
-                  'border-red-800': message && message.lineTwo
-                }"
               />
             </div>
-            <span
-              class="text-sm text-red-800"
-              *ngIf="message && message.lineTwo"
-            >
-              {{ message.lineTwo }}
-            </span>
           </label>
       </div>
       <div class="w-full">
@@ -113,14 +77,9 @@
               formControlName="city"
               class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
               placeholder="City"
-              [ngClass]="{
-                'border-red-800': message && message.city
-              }"
+            
             />
           </div>
-          <span class="text-sm text-red-800" *ngIf="message && message.city">
-            {{ message.city }}
-          </span>
         </label>
       </div>
       <div class="w-full">
@@ -132,14 +91,8 @@
               formControlName="state"
               class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
               placeholder="State"
-              [ngClass]="{
-                'border-red-800': message && message.state
-              }"
             />
           </div>
-          <span class="text-sm text-red-800" *ngIf="message && message.state">
-            {{ message.state }}
-          </span>
         </label>
       </div>
       <div class="w-full">
@@ -151,14 +104,8 @@
               formControlName="country"
               class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
               placeholder="Country"
-              [ngClass]="{
-                'border-red-800': message && message.country
-              }"
             />
           </div>
-          <span class="text-sm text-red-800" *ngIf="message && message.country">
-            {{ message.country }}
-          </span>
         </label>
       </div>
     </div>
@@ -166,9 +113,7 @@
     <div class="mt-10">
       <button
         type="submit"
-        [ngClass]="{'opacity-50': !userForm.valid }"
         class="bg-blue-600 p-2 text-white rounded w-32"
-        [disabled]="!userForm.valid"
       >
         Submit
       </button>
