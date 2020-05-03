@@ -92,6 +92,7 @@ export class AppComponent {
       () => {
        const { dirty, pristine, valid, errors, invalid, value } = this.userForm;
        this.status = JSON.stringify({ dirty, pristine, valid, errors, invalid, value })
+       console.log(this.userForm)
       }
     )
   }
@@ -99,15 +100,15 @@ export class AppComponent {
   invalidInputs(formgroup: FormGroup): { [key: string]: string } {
     let messages = {};
     for (const input in formgroup.controls) {
-        const key = formgroup.controls[input];
-        if (key instanceof FormGroup) {
-          const nestedGroupMessages = this.invalidInputs(key);
+        const control = formgroup.controls[input];
+        if (control instanceof FormGroup) {
+          const nestedGroupMessages = this.invalidInputs(control);
           Object.assign(messages, nestedGroupMessages)
         } else {
           if (this.validationMessages[input]) {
             messages[input] = '';
-            if (key.errors && (key.dirty || key.touched)) {
-              Object.keys(key.errors).map(messageKey => {
+            if (control.errors && (control.dirty || control.touched)) {
+              Object.keys(control.errors).map(messageKey => {
                 if (this.validationMessages[input][messageKey]) {
                   messages[input] = this.validationMessages[input][messageKey];
                 }
@@ -122,15 +123,8 @@ export class AppComponent {
 
 
   onSubmit() {
-    let { formObj } = this;
     let { value } = this.userForm;
     console.log(value);
-    const sth = JSON.stringify({ ...formObj, business: value });
-    try {
-      localStorage.setItem('form', sth);
-    } catch {
-      (e) => console.log(e);
-    }
   }
 
 }
