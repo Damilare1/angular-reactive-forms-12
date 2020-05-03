@@ -165,11 +165,11 @@
     <div class="mt-10">
       <button
         type="submit"
-        [ngClass]="{ 'bg-blue-300': !userForm.valid }"
-        class="bg-paleBlue p-2 text-white rounded w-32"
+        [ngClass]="{'opacity-50': !userForm.valid }"
+        class="bg-blue-600 p-2 text-white rounded w-32"
         [disabled]="!userForm.valid"
       >
-        Next Page
+        Submit
       </button>
     </div>
   </form>

@@ -586,7 +586,7 @@ module.exports = {
       '3': '3deg',
       '6': '6deg',
       '12': '12deg',
-    },
+    },*/
     transitionProperty: {
       none: 'none',
       all: 'all',
@@ -595,7 +595,7 @@ module.exports = {
       opacity: 'opacity',
       shadow: 'box-shadow',
       transform: 'transform',
-    },
+    },/*
     transitionTimingFunction: {
       linear: 'linear',
       in: 'cubic-bezier(0.4, 0, 1, 1)',

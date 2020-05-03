@@ -61,12 +61,12 @@ export class AppComponent {
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      email: ['',[ Validators.required, Validators.email]],
       address: this.fb.group({
         lineOne: ['', [Validators.required]],
         lineTwo: ['', [Validators.required]],
-        city: ['', [Validators.required]],
-        state: ['', [Validators.required, Validators.email]],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
         country: ['', [Validators.required]],
       }),
     });
@@ -114,6 +114,7 @@ export class AppComponent {
   onSubmit() {
     let { formObj } = this;
     let { value } = this.userForm;
+    console.log(value);
     const sth = JSON.stringify({ ...formObj, business: value });
     try {
       localStorage.setItem('form', sth);
