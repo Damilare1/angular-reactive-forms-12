@@ -1,202 +1,176 @@
-<div>
+<div class="px-10">
   <h5 class="font-bold my-2">Create User</h5>
-    <form [formGroup]="acquirerForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label Class="w-full text-md font-light"
-          >First Name
-          <div class="relative w-full pt-2 flex items-center">
-            <input
-              type="text"
-              formControlName="firstName"
-              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-              placeholder="First Name"
-              [ngClass]="{
-                'border-red-800': message && message.firstName
-              }"
-            />
-            
-          </div>
-          <span
-            class="text-sm text-red-800"
-            *ngIf="message && message.firstName"
-          >
-            {{ message.firstName }}
-          </span>
-        </label>
-      </div>
-      <div>
-        <label Class="w-full text-md font-light"
-          >Last Name
-          <div class="relative w-full pt-2 flex items-center">
-            <input
-              type="text"
-              formControlName="firstName"
-              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-              placeholder="Last Name"
-              [ngClass]="{
-                'border-red-800': message && message.lastName
-              }"
-            />
-            
-          </div>
-          <span
-            class="text-sm text-red-800"
-            *ngIf="message && message.lastName"
-          >
-            {{ message.lastName }}
-          </span>
-        </label>
-      </div>
-      <div>
-        <label Class="w-full text-md font-light"
-          >Email
-          <div class="relative w-full pt-2 flex items-center">
-            <input
-              type="text"
-              formControlName="email"
-              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-              placeholder="Email address"
-              [ngClass]="{
-                'border-red-800': message && message.email
-              }"
-            />
-            
-          </div>
-          <span
-            class="text-sm text-red-800"
-            *ngIf="message && message.email"
-          >
-            {{ message.email }}
-          </span>
-        </label>
-      </div>
-      <div formGroupName="address" class="my-6">
-        <h4 class="uppercase font-bold text-lg">Address</h4>
-        <div class="py-2 flex justify-between">
-          <div class="w-full">
-            <label Class="w-full text-md font-light"
-              >Line One
-              <div class="pt-2 flex items-center">
-                <input
-                  type="text"
-                  formControlName="lineOne"
-                  class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-                  placeholder="Enter address line one"
-                  [ngClass]="{
-                    'border-red-800': message && message.lineOne
-                  }"
-                />
-              </div>
-              <span
-                class="text-sm text-red-800"
-                *ngIf="message && message.lineOne"
-              >
-                {{ message && message.lineOne }}
-              </span>
-            </label>
-          </div>
-          <div class="w-full">
-            <label Class="w-full text-md font-light"
-              >Line Two
-              <div class="pt-2 flex items-center">
-                <input
-                  type="text"
-                  formControlName="lineTwo"
-                  class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-                  placeholder="Enter address line two"
-                  [ngClass]="{
-                    'border-red-800': message && message.lineTwo
-                  }"
-                />
-              </div>
-              <span
-                class="text-sm text-red-800"
-                *ngIf="message && message.lineTwo"
-              >
-                {{ mmessage.lineTwo }}
-              </span>
-            </label>
-          </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label Class="w-full text-md font-light"
+        >First Name
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="text"
+            formControlName="firstName"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="First Name"
+            [ngClass]="{
+              'border-red-800': message && message.firstName
+            }"
+          />
         </div>
-        <div class="py-2 flex justify-between">
-          <div class="w-full">
-            <label Class="w-full text-md font-light"
-              >City
-              <div class="pt-2 flex items-center">
-                <input
-                  type="text"
-                  formControlName="city"
-                  class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-                  placeholder="City"
-                  [ngClass]="{
-                    'border-red-800': message && message.city
-                  }"
-                />
-              </div>
-              <span
-                class="text-sm text-red-800"
-                *ngIf="message && message.city"
-              >
-                {{ message.city }}
-              </span>
-            </label>
-          </div>
-          <div class="w-full">
-            <label Class="w-full text-md font-light"
-              >State
-              <div class="pt-2 flex items-center">
-                <input
-                  type="text"
-                  formControlName="state"
-                  class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-                  placeholder="State"
-                  [ngClass]="{
-                    'border-red-800': message && message.state
-                  }"
-                />
-              </div>
-              <span
-                class="text-sm text-red-800"
-                *ngIf="message && message.state"
-              >
-                {{  message.state }}
-              </span>
-            </label>
-          </div>
+        <span class="text-sm text-red-800" *ngIf="message && message.firstName">
+          {{ message.firstName }}
+        </span>
+      </label>
+    </div>
+    <div>
+      <label Class="w-full text-md font-light"
+        >Last Name
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="text"
+            formControlName="lastName"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Last Name"
+            [ngClass]="{
+              'border-red-800': message && message.lastName
+            }"
+          />
         </div>
-        <div class="py-2 flex justify-between">
-          <div class="w-full">
-            <label Class="w-full text-md font-light"
-              >Country
-              <div class="pt-2 flex items-center">
-                <input
-                  type="text"
-                  formControlName="country"
-                  class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
-                  placeholder="Country"
-                  [ngClass]="{
-                    'border-red-800': message && message.country
-                  }"
-                />
-              </div>
-              <span
-                class="text-sm text-red-800"
-                *ngIf="message && message.country"
-              >
-                {{ message.country }}
-              </span>
-            </label>
-          </div>
-      <div class="mt-10">
-        <button
-          type="submit"
-          [ngClass]="{'bg-blue-300': !userForm.valid}"
-          class="bg-paleBlue p-2 text-white rounded w-32"
-          [disabled]="!userForm.valid"
-        >
-          Next Page
-        </button>
+        <span class="text-sm text-red-800" *ngIf="message && message.lastName">
+          {{ message.lastName }}
+        </span>
+      </label>
+    </div>
+    <div>
+      <label Class="w-full text-md font-light"
+        >Email
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="text"
+            formControlName="email"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Email address"
+            [ngClass]="{
+              'border-red-800': message && message.email
+            }"
+          />
+        </div>
+        <span class="text-sm text-red-800" *ngIf="message && message.email">
+          {{ message.email }}
+        </span>
+      </label>
+    </div>
+    <div formGroupName="address" class="my-6">
+      <h4 class="uppercase font-bold text-lg">Address</h4>
+        <div class="w-full">
+          <label Class="w-full text-md font-light"
+            >Line One
+            <div class="pt-2 flex items-center">
+              <input
+                type="text"
+                formControlName="lineOne"
+                class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+                placeholder="Enter address line one"
+                [ngClass]="{
+                  'border-red-800': message && message.lineOne
+                }"
+              />
+            </div>
+            <span
+              class="text-sm text-red-800"
+              *ngIf="message && message.lineOne"
+            >
+              {{ message && message.lineOne }}
+            </span>
+          </label>
+        </div>
+        <div class="w-full">
+          <label Class="w-full text-md font-light"
+            >Line Two
+            <div class="pt-2 flex items-center">
+              <input
+                type="text"
+                formControlName="lineTwo"
+                class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+                placeholder="Enter address line two"
+                [ngClass]="{
+                  'border-red-800': message && message.lineTwo
+                }"
+              />
+            </div>
+            <span
+              class="text-sm text-red-800"
+              *ngIf="message && message.lineTwo"
+            >
+              {{ message.lineTwo }}
+            </span>
+          </label>
       </div>
-    </form>
-  </div>
+      <div class="w-full">
+        <label Class="w-full text-md font-light"
+          >City
+          <div class="pt-2 flex items-center">
+            <input
+              type="text"
+              formControlName="city"
+              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+              placeholder="City"
+              [ngClass]="{
+                'border-red-800': message && message.city
+              }"
+            />
+          </div>
+          <span class="text-sm text-red-800" *ngIf="message && message.city">
+            {{ message.city }}
+          </span>
+        </label>
+      </div>
+      <div class="w-full">
+        <label Class="w-full text-md font-light"
+          >State
+          <div class="pt-2 flex items-center">
+            <input
+              type="text"
+              formControlName="state"
+              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+              placeholder="State"
+              [ngClass]="{
+                'border-red-800': message && message.state
+              }"
+            />
+          </div>
+          <span class="text-sm text-red-800" *ngIf="message && message.state">
+            {{ message.state }}
+          </span>
+        </label>
+      </div>
+      <div class="w-full">
+        <label Class="w-full text-md font-light"
+          >Country
+          <div class="pt-2 flex items-center">
+            <input
+              type="text"
+              formControlName="country"
+              class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+              placeholder="Country"
+              [ngClass]="{
+                'border-red-800': message && message.country
+              }"
+            />
+          </div>
+          <span class="text-sm text-red-800" *ngIf="message && message.country">
+            {{ message.country }}
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="mt-10">
+      <button
+        type="submit"
+        [ngClass]="{ 'bg-blue-300': !userForm.valid }"
+        class="bg-paleBlue p-2 text-white rounded w-32"
+        [disabled]="!userForm.valid"
+      >
+        Next Page
+      </button>
+    </div>
+  </form>
 </div>

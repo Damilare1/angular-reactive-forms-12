@@ -23,7 +23,7 @@ export class AppComponent {
   @ViewChildren(FormControlName, { read: ElementRef }) formControls: ElementRef[];
   formObj: {};
   userForm: FormGroup;
-  displayMessage: { [key: string]: string } = {};
+  message: { [key: string]: string } = {};
   private validationMessages: {
     [key: string]: { [key: string]: string | { [key: string]: string } };
   };
@@ -81,7 +81,7 @@ export class AppComponent {
     merge(this.userForm.valueChanges, ...addBlurs)
       .pipe(debounceTime(800))
       .subscribe((value) => {
-        this.displayMessage = this.invalidItems(
+        this.message = this.invalidItems(
           this.userForm
         );
       });
