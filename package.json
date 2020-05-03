@@ -13,10 +13,12 @@
     "@angular/router": "^9.1.0",
     "core-js": "^3.6.4",
     "rxjs": "^6.5.4",
+    "tailwindcss": "^1.4.4",
     "tslib": "^1.10.0",
     "zone.js": "^0.10.3"
   },
   "scripts": {
+    "tailwindcss": "tailwind build ./src/tailwind.css -c ./tailwind.config.js -o ./src/styles.css",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -29,9 +31,9 @@
     "@angular/cli": "~7.0.2",
     "@angular/compiler-cli": "~7.0.0",
     "@angular/language-service": "~7.0.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
