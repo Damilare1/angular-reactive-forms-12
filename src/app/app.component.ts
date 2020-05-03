@@ -3,7 +3,6 @@ import {
   ViewChildren,
   ElementRef,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormControlName,
@@ -28,7 +27,7 @@ export class AppComponent {
   private validationMessages: {
     [key: string]: { [key: string]: string | { [key: string]: string } };
   };
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder) {
     this.validationMessages = {
       firstName: {
         required: "Please enter your first name"
@@ -118,7 +117,6 @@ export class AppComponent {
     const sth = JSON.stringify({ ...formObj, business: value });
     try {
       localStorage.setItem('form', sth);
-      this.router.navigate(['/acquirers/create/customer']);
     } catch {
       (e) => console.log(e);
     }
